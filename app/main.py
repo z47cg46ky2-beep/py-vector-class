@@ -36,7 +36,7 @@ class Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(self.x / length, self.y / length)
+        return Vector(round(self.x / length, 2), round(self.y / length, 2))
 
     def angle_between(self, other: "Vector") -> int:
         dot_product = self * other
@@ -48,12 +48,13 @@ class Vector:
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
-        return self.angle_between(Vector(0, 1))
+        return round(abs(math.degrees(math.atan2(self.x, self.y))))
 
     def rotate(self, degrees: int) -> "Vector":
-        rad = math.radians(degrees)
-        cos_a = math.cos(rad)
-        sin_a = math.sin(rad)
-        rotated_x = self.x * cos_a - self.y * sin_a
-        rotated_y = self.x * sin_a + self.y * cos_a
-        return Vector(rotated_x, rotated_y)
+        radians = math.radians(degrees)
+        cos_a = math.cos(radians)
+        sin_a = math.sin(radians)
+        return Vector(
+            self.x * cos_a - self.y * sin_a,
+            self.x * sin_a + self.y * cos_a,
+        )
