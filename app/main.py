@@ -49,3 +49,12 @@ class Vector:
 
     def get_angle(self) -> int:
         return round(abs(math.degrees(math.atan2(self.x, self.y))))
+
+    def rotate(self, degrees: int) -> "Vector":
+        radians = math.radians(degrees)
+        cos_a = math.cos(radians)
+        sin_a = math.sin(radians)
+        return Vector(
+            self.x * cos_a - self.y * sin_a,
+            self.x * sin_a + self.y * cos_a,
+        )
