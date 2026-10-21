@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(float(x), 2)
-        self.y = round(float(y), 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(float(x_coord), 2)
+        self.y = round(float(y_coord), 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         if isinstance(other, Vector):
@@ -49,12 +49,3 @@ class Vector:
 
     def get_angle(self) -> int:
         return round(abs(math.degrees(math.atan2(self.x, self.y))))
-
-    def rotate(self, degrees: int) -> "Vector":
-        radians = math.radians(degrees)
-        cos_a = math.cos(radians)
-        sin_a = math.sin(radians)
-        return Vector(
-            self.x * cos_a - self.y * sin_a,
-            self.x * sin_a + self.y * cos_a,
-        )
