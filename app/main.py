@@ -55,6 +55,6 @@ class Vector:
         rad = math.radians(degrees)
         cos_a = math.cos(rad)
         sin_a = math.sin(rad)
-        new_x = self.x * cos_a - self.y * sin_a
-        new_y = self.x * sin_a + self.y * cos_a
-        return Vector(new_x, new_y)
+        rotated_x = self.x * cos_a - self.y * sin_a
+        rotated_y = self.x * sin_a + self.y * cos_a
+        return Vector(rotated_x, rotated_y)
